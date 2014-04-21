@@ -34,7 +34,7 @@ describe Gemgate::SpecsIndex do
   end
 
   it "adds if all provided conditions are true" do
-    gem = stub("gem", :name => "foobar", :version => Gem::Version.create("0.0.1"), :platform => "ruby")
+    gem = double("gem", :name => "foobar", :version => Gem::Version.create("0.0.1"), :platform => "ruby")
 
     storage = double("storage")
     storage.should_receive(:get).with("foobar_specs.4.8.gz") { nil }
@@ -48,7 +48,7 @@ describe Gemgate::SpecsIndex do
   end
 
   it "skips adding if not all provided conditions are true" do
-    gem = stub("gem", :name => "foobar", :version => Gem::Version.create("0.0.1"), :platform => "ruby")
+    gem = double("gem", :name => "foobar", :version => Gem::Version.create("0.0.1"), :platform => "ruby")
 
     storage = double("storage")
     storage.should_receive(:get).with("foobar_specs.4.8.gz") { Gem.gzip(Marshal.dump([])) }
@@ -62,7 +62,7 @@ describe Gemgate::SpecsIndex do
   end
 
   it "ensures the file exists even when not adding" do
-    gem = stub("gem", :name => "foobar", :version => Gem::Version.create("0.0.1"), :platform => "ruby")
+    gem = double("gem", :name => "foobar", :version => Gem::Version.create("0.0.1"), :platform => "ruby")
 
     storage = double("storage")
     storage.should_receive(:get).with("foobar_specs.4.8.gz") { nil }

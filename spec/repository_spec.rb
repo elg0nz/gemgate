@@ -5,9 +5,9 @@ describe Gemgate::Repository do
     realizer = double("realizer")
     realizer.should_receive(:call).with("hi")
 
-    gem_files = stub("gem_files").as_null_object
+    gem_files = double("gem_files").as_null_object
 
-    index = stub("index").as_null_object
+    index = double("index").as_null_object
 
     subject.realizer = realizer
     subject.gem_files = gem_files
@@ -17,14 +17,14 @@ describe Gemgate::Repository do
   end
 
   it "adds the realized gem to the gem files" do
-    gem = stub("gem")
+    gem = double("gem")
 
-    realizer = stub("realizer", :call => gem)
+    realizer = double("realizer", :call => gem)
 
     gem_files = double("gem_files")
     gem_files.should_receive(:add).with(gem)
 
-    index = stub("index").as_null_object
+    index = double("index").as_null_object
 
     subject.realizer = realizer
     subject.gem_files = gem_files
@@ -34,11 +34,11 @@ describe Gemgate::Repository do
   end
 
   it "adds the realized gem to the index" do
-    gem = stub("gem")
+    gem = double("gem")
 
-    realizer = stub("realizer", :call => gem)
+    realizer = double("realizer", :call => gem)
 
-    gem_files = stub("gem_files").as_null_object
+    gem_files = double("gem_files").as_null_object
 
     index = double("index")
     index.should_receive(:add).with(gem)
