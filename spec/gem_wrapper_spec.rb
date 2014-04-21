@@ -9,7 +9,7 @@ describe Gemgate::GemWrapper do
     it "sets the spec on the new instance" do
       gem_wrapper = described_class.from_path(fixture("foobar-0.0.1.gem"))
 
-      gem_wrapper.spec.should == Gem::Package.open(File.open(fixture("foobar-0.0.1.gem"))) {|p| p.metadata }
+      gem_wrapper.spec.should == Gem::Package.new(File.open(fixture("foobar-0.0.1.gem"))).spec
     end
 
     it "sets the path on the new instance" do
