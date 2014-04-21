@@ -6,7 +6,7 @@ describe Gemgate::Index do
 
     specs = stub("specs").as_null_object
 
-    latest_specs = mock("latest specs")
+    latest_specs = double("latest specs")
     latest_specs.should_receive(:add).with(gem)
 
     prerelease_specs = stub("latest specs").as_null_object
@@ -24,7 +24,7 @@ describe Gemgate::Index do
   it "adds a gem to specs" do
     gem = stub("gem")
 
-    specs = mock("specs")
+    specs = double("specs")
     specs.should_receive(:add).with(gem)
 
     latest_specs = stub("latest specs").as_null_object
@@ -48,7 +48,7 @@ describe Gemgate::Index do
 
     latest_specs = stub("latest specs").as_null_object
 
-    prerelease_specs = mock("prerelease specs")
+    prerelease_specs = double("prerelease specs")
     prerelease_specs.should_receive(:add).with(gem)
 
     quick_marshal_specs = stub("quick marshal specs").as_null_object
@@ -70,7 +70,7 @@ describe Gemgate::Index do
 
     prerelease_specs = stub("latest specs").as_null_object
 
-    quick_marshal_specs = mock("quick marshal specs")
+    quick_marshal_specs = double("quick marshal specs")
     quick_marshal_specs.should_receive(:add).with(gem)
 
     subject.specs = specs
