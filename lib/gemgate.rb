@@ -9,3 +9,4 @@ require "gemgate/repository"
 require "gemgate/web"
 
 require "gemgate/storage/s3"
+require "gemgate/storage/riak_cs"

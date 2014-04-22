@@ -5,6 +5,8 @@ ENV["AWS_SECRET_ACCESS_KEY"] = "foobar"
 ENV["GEMGATE_AUTH"] = "foo:bar"
 ENV["S3_BUCKET"] = "gemgate-test"
 ENV["S3_KEY_PREFIX"] = "deadbeef"
+ENV["RIAKCS_HOST"] = "http://deadbeef.com"
+ENV["RIAKCS_PORT"] = "8080"
 
 require "gemgate"
 

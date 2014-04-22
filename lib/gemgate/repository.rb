@@ -20,7 +20,7 @@ module Gemgate
     end
 
     def storage
-      @storage ||= Storage::S3.new
+      @storage ||= Storage::RiakCS.new
     end
 
     def index

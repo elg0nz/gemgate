@@ -5,22 +5,18 @@ describe Gemgate::Storage::RiakCS do
     "AWS_ACCESS_KEY_ID" => "foobar",
     "AWS_SECRET_ACCESS_KEY" => "foobar",
     "S3_BUCKET" => "gemgate-test",
-    "S3_KEY_PREFIX" => "ultrasecure"
+    "S3_KEY_PREFIX" => "ultrasecure",
+    "RIAKCS_HOST" => "http://foobar.com",
+    "RIAKCS_PORT" => "8080"
   }
+
   subject { described_class.new(described_class_params) }
 
-  it "creates a public file with the given path and body" do
-    subject.create("foobar", "hello")
-
-    remote_file = remote_directory.files.detect {|f| f.key == "ultrasecure/foobar" }
-    remote_file.should_not be_nil
-
-    remote_file.body.should == "hello"
-
-    remote_file.public_url.should_not be_nil
+  it "has a host setup" do
+    subject.host.should == "http://foobar.com"
   end
 
-  def remote_directory
-    fog.directories.get("gemgate-test")
+  it "should be a child object of Storage::S3" do
+    subject.class.ancestors.should include(Gemgate::Storage::S3)
   end
 end
